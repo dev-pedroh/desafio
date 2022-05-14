@@ -6,22 +6,31 @@ export async function createTable(){
     })
 }
 
-export async function insertPontosTuristicos(pontos){
+export async function selectPontosTuristicos(requisicao, resposta){
     openDb().then(db=>{
-        db.run('INSERT INTO PontosTuristicos (nomeponto, cidade, estado, referencia, sobre) VALUES (?, ?, ?, ?, ?)', [pontos.nomePonto, pontos.cidade, pontos.estado, pontos.referencia, pontos.sobre]);
-    })
-}
-
-export async function selectPontosTuristicos(){
-    return openDb().then(db=>{
-        return db.all('SELECT * FROM PontosTuristicos')
-        .then(resposta=>resposta)
+        db.all('SELECT * FROM PontosTuristicos')
+        .then(pontos=> resposta.json(pontos))
     });
 }
 
-export async function selectPontoTuristico(nomePonto, cidade, estado){
-    return openDb().then(db=>{
-        return db.get('SELECT nomePonto, cidade, estado FROM PontosTuristicos WHERE nomePonto=? OR cidade=? OR estado=?', [nomePonto, cidade, estado])
-        .then(resposta=>resposta)
+export async function selectPontoTuristico(requisicao, resposta){
+    let nomePonto = requisicao.body.nomePonto;
+    let cidade = requisicao.body.cidade;
+    let estado = requisicao.body.estado;
+      
+    openDb().then(db=>{
+        db.all('SELECT nomePonto, cidade, estado FROM PontosTuristicos WHERE nomePonto=? OR cidade=? OR estado=?', [nomePonto, cidade, estado])
+        .then(ponto=> resposta.json(ponto))
+    });
+}
+
+export async function insertPontosTuristicos(requisicao, resposta){
+    let pontos = requisicao.body;
+    
+    openDb().then(db=>{
+        db.run('INSERT INTO PontosTuristicos (nomeponto, cidade, estado, referencia, sobre) VALUES (?, ?, ?, ?, ?)', [pontos.nomePonto, pontos.cidade, pontos.estado, pontos.referencia, pontos.sobre]);
+    });
+    resposta.json({
+        "statusCode": 200
     });
 }
