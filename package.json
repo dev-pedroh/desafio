@@ -1,0 +1,26 @@
+{
+  "name": "teste-newcon",
+  "version": "1.0.0",
+  "description": "teste ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-pedroh/desafio.git"
+  },
+  "author": "pedro h",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dev-pedroh/desafio/issues"
+  },
+  "homepage": "https://github.com/dev-pedroh/desafio#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "mssql": "^8.1.0",
+    "sequelize": "^6.19.0",
+    "tedious": "^14.5.0"
+  }
+}
