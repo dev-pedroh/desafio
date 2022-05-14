@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Open+Sans:wght@300;400;700&family=Sarala&display=swap");
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'MontSerrat', sans-serif;
+}
+
+.containerHeader {
+    background-color: #132235;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 20px;
+    height: auto;
+    margin-top: 30px;
+}
+
+.navHeader {
+    color: #FFF;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-left: 2.5em;
+    margin-right: 1em;
+    font-family: 'MontSerrat', sans-serif;
+}
+
+.imgLogo {
+    height: 125px ;
+}
+
+.containerMain {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerRegister h2 {
+    padding: 35px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.containerForm label {
+    font-weight: bold;
+}
+
+.containerForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerForm div {
+    margin: 8px 0;
+}
+
+.containerForm div label {
+    margin-bottom: 4px;
+}
+
+.fieldWidthEqual {
+    width: 400px;
+}
+
+.containerFieldsCity{
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerFieldsCity input {
+    width: 250px;
+}
+
+.fieldAlign {
+    display: flex;
+    flex-direction: column;
+}
+
+.fieldAlign textarea{
+    padding: 5px;;
+}
+
+.buttonForm {
+    margin: 10px 3px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonForm button {
+    height: 30px;
+    width: 100px;
+}

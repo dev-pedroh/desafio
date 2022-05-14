@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Página de Cadastro</title>
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/css/style-form.css">
+    </head>
+    <body>
+        <header class="containerHeader">
+            <img src="assets/img/logotipo.png" class="imgLogo" alt="Logo da empresa">
+            <h1 class="navHeader">Página de Cadastro</h1>
+        </header>
+        <main class="containerMain">
+            <section class="containerRegister">
+                <h2> Cadastre o novo Ponto Turístico</h2>
+                <form class="containerForm">
+                    <div class="fieldAlign">
+                        <label>Nome:</label>
+                        <input class="fieldWidthEqual" type="text" placeholder="Digite o nome">
+                    </div>
+                    <div class="fieldAlign">
+                        <label>Localização</label>
+                        <div class="containerFieldsCity">
+                            <label>UF/Cidade</label>
+                            <select>
+                                <option selected>UF</option>
+                                <option></option>
+                            </select>
+                            <input type="text" placeholder="Informe a cidade...">
+                        </div>
+                    </div>                 
+                    <div class="fieldAlign">
+                        <label>Referência</label>
+                        <input class="fieldWidthEqual" type="text">
+                    </div>
+                    <div class="fieldAlign">
+                        <label>Descritivo</label>                  
+                        <textarea class="fieldWidthEqual" rows="5" cols="20" placeholder="Sobre o local..."></textarea>
+                    </div>  
+                </form>
+                <div class="buttonForm">
+                    <button>Voltar</button>
+                    <button>Cadastrar</button>
+                </div> 
+            </section>
+        </main>
+        <footer>
+        </footer>
+    </body>
+</html>
