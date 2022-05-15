@@ -7,6 +7,7 @@
         <title> Página de Cadastro</title>
         <link rel="stylesheet" href="assets/css/reset.css">
         <link rel="stylesheet" href="assets/css/style-form.css">
+        
     </head>
     <body>
         <header class="containerHeader">
@@ -19,35 +20,40 @@
                 <form class="containerForm">
                     <div class="fieldAlign">
                         <label>Nome:</label>
-                        <input class="fieldWidthEqual" type="text" placeholder="Digite o nome">
+                        <input class="nomePonto fieldWidthEqual" type="text" placeholder="Digite o nome">
                     </div>
                     <div class="fieldAlign">
                         <label>Localização</label>
                         <div class="containerFieldsCity">
                             <label>UF/Cidade</label>
-                            <select>
+                            <select class="estado">
                                 <option selected>UF</option>
                                 <option></option>
                             </select>
-                            <input type="text" placeholder="Informe a cidade...">
+                            <input class="cidade" type="text" placeholder="Informe a cidade">
                         </div>
                     </div>                 
                     <div class="fieldAlign">
                         <label>Referência</label>
-                        <input class="fieldWidthEqual" type="text">
+                        <input class="referencia fieldWidthEqual" type="text" placeholder="Ponto de referencia">
                     </div>
                     <div class="fieldAlign">
                         <label>Descritivo</label>                  
-                        <textarea class="fieldWidthEqual" rows="5" cols="20" placeholder="Sobre o local..."></textarea>
-                    </div>  
-                </form>
-                <div class="buttonForm">
-                    <button>Voltar</button>
-                    <button>Cadastrar</button>
-                </div> 
+                        <textarea class="sobre fieldWidthEqual" rows="5" cols="20" placeholder="Sobre o local..."></textarea>
+                    </div>
+                    <div class="buttonForm">
+                        <button type="submit" id="buttonVoltar">Voltar</button>
+                        <button type="submit" id="buttonCadastrar">Cadastrar</button>
+                    </div> 
+                </form>  
+            </section>
+            <section class="containerResult">
+                <div id="alert"></div>   
             </section>
         </main>
         <footer>
         </footer>
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/register.js"></script>
     </body>
 </html>
