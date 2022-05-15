@@ -27,7 +27,7 @@ function createAlert(reference, message){
 
     setTimeout(function(){
         alertContainer.innerHTML = ''
-    }, 3000)
+    }, 5000)
 }
 
 function clearInput(){
