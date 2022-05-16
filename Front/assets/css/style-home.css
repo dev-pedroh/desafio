@@ -130,3 +130,7 @@ main h1 {
 .invisivel {
     display: none;
 }
+
+#descricao-acao {
+    margin: 10px;
+}

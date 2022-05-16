@@ -38,7 +38,7 @@
                 </form>   
             </section>
             <div id="alert"></div> 
-            <section class="table-resultado">
+            <section class="table-resultado invisivel">
                 <h1>Pontos Turísticos</h1>
                 <h2>Filtros</h2>
                 <div id="filtros">
@@ -50,6 +50,9 @@
                     <input name="filtro" type="text" id="filtro-sobre"
                     placeholder="Filtre pela descrição">
                 </div>
+                <div id="descricao-acao">
+                    <h3>Obs.: Para ver a descrição clique duas vezes sobre a linha do Ponto Turístico</h3>
+                </div>
                 <table class="containerResultado">
                     <thead>
                         <tr class="pontosTuristicos">
@@ -58,7 +61,7 @@
                             <th>Cidade</th>
                             <th>Referencia</th>
                             <th>Sobre</th>
-                            <th>Data do Registro</th>
+                            <th>Data do Registro</th>  
                         </tr>
                     </thead>
                     <tbody id="tabelaPontosTuristicos">

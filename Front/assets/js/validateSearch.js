@@ -21,10 +21,20 @@ function buildTr(pontoTuristico) {
     pontoTuristicoTr.appendChild(buildTd(pontoTuristico.referencia, "info-referencia"));
     pontoTuristicoTr.appendChild(buildTd(pontoTuristico.sobre, "info-sobre"));
     pontoTuristicoTr.appendChild(buildTd(pontoTuristico.data, "info-data"));
-
+    
     return pontoTuristicoTr;
 }
+
+function setInvisible(){
+    const referencia = document.querySelector('.info-referencia');
+    const sobre = document.querySelector('.info-sobre')
+    const data = document.querySelector('.info-data')
     
+    referencia.classList.add('invisivel');
+    sobre.classList.add('invisivel');
+    data.classList.add('invisivel');
+}
+
 function addPontoTuristicoInTable(pontoTuristico) {
     var pontoTuristicoTr = buildTr(pontoTuristico);
     var tabela = document.querySelector("#tabelaPontosTuristicos");
@@ -101,6 +111,11 @@ function clearInput(){
     inputCidade.value = '';
 }
 
+function hideTableResult(){
+    const containerTableResult = document.querySelector('.table-resultado');
+    containerTableResult.classList.remove("invisivel");
+}
+
 function validateInputPonto(event){
     event.preventDefault();
     let message = '';
@@ -120,6 +135,7 @@ function validateInputPonto(event){
         searchDataPonto();
         createAlert(true, messageDefault);
         clearInput();
+        hideTableResult();
     }
 
 }
@@ -143,6 +159,7 @@ function validateInputCidade(event){
         searchDataCidade();
         createAlert(true, messageDefault);
         clearInput();
+        hideTableResult()
     }
 
 }
