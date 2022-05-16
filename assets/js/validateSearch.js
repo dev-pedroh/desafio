@@ -24,7 +24,9 @@ function submitFilterGet(url, query){
 }
 
 function searchDataPonto(){
-    submitFilterGet(`https://localhost:3001/ponto?nomePonto=${inputNomePonto}`);
+    const valorInput = encodeURIComponent(inputNomePonto.value);
+    submitFilterGet(`https://localhost:3001/ponto?nomePonto=${valorInput}`);
+    console.log(valorInput, typeof(valorInput))
 }
 
 /*
