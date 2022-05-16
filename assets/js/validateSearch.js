@@ -2,6 +2,39 @@ const inputBuscar = document.querySelector('#inputBuscar');
 const submitInput = document.querySelector('#buttonBuscar');
 const alertContainer = document.querySelector('#alert');
 
+function submitGet(url){
+    let request = new XMLHttpRequest();
+    request.open("GET", url, false);
+    request.send();
+}
+
+function searchData(){
+    let url = "https://localhost:3001/pontos";
+    submitGet(url);
+}
+
+function submitFilterGet(url, body){
+    let request = new XMLHttpRequest();
+    request.open("GET", url, false);
+    request.send(JSON.stringify(body));
+    return request.responseText;
+
+}
+
+function searchData(){   
+    let url = "https://localhost:3001/ponto"
+
+    body = {
+        "nomePonto": inputBuscar.value,
+        "estado": inputBuscar.value,
+        "cidade": inputBuscar.value,
+        "referencia": inputBuscar.value,
+        "sobre": inputBuscar.value
+    }
+
+    submitFiltreGet(url, body) 
+}
+
 function createAlert(reference, message){
     const iconError = 'fa-circle-exclamation'
     const iconSuccess = 'fa-check'
@@ -48,7 +81,9 @@ function validateInput(event){
 
     if(inputInvalid()){
         return createAlert(false, message);
+
     } else {
+        
         createAlert(true, messageDefault);
         clearInput();
     }

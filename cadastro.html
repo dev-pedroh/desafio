@@ -25,12 +25,14 @@
                     <div class="fieldAlign">
                         <label>Localização</label>
                         <div class="containerFieldsCity">
-                            <label>UF/Cidade</label>
-                            <select class="estado">
-                                <option selected>UF</option>
-                                <option></option>
+                            <label for="uf">UF</label>
+                            <select id="uf">
+                                <option>UF</option>
                             </select>
-                            <input class="cidade" type="text" placeholder="Informe a cidade">
+                            <label for="cidade">Cidade</label>
+                            <select id="cidade">
+                                <option selected>Cidade</option>
+                            </select>
                         </div>
                     </div>                 
                     <div class="fieldAlign">
@@ -42,7 +44,7 @@
                         <textarea class="sobre fieldWidthEqual" rows="5" cols="20" placeholder="Sobre o local..."></textarea>
                     </div>
                     <div class="buttonForm">
-                        <button type="submit" id="buttonVoltar">Voltar</button>
+                        <button id="buttonVoltar">Voltar</button>
                         <button type="submit" id="buttonCadastrar">Cadastrar</button>
                     </div> 
                 </form>  
@@ -53,7 +55,7 @@
         </main>
         <footer>
         </footer>
-        <script src="assets/js/jquery.js"></script>
-        <script src="assets/js/register.js"></script>
+        <script src="assets/js/apiLocality.js"></script>
+        <script src="assets/js/validateForm.js"></script>
     </body>
 </html>

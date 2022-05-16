@@ -66,13 +66,17 @@
     width: 400px;
 }
 
-.containerFieldsCity{
-    display: flex;
-    justify-content: space-between;
+.containerFieldsCity label {
+    margin-right: 10px;
 }
 
-.containerFieldsCity input {
-    width: 250px;
+#uf {
+    margin-right: 10px;
+}
+
+#cidade {
+    width: 215px;
+    padding-left: 5px;
 }
 
 .fieldAlign {

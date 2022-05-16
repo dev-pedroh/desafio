@@ -22,13 +22,37 @@
                 <input type="text" id="inputBuscar" placeholder="Busque pelo nome, estado, cidade, ou descrição do lugar.">
                 <button type="submit" id="buttonBuscar">Buscar</button>
             </form>
+            <div id="alert"></div> 
+            <h1> Pontos Turísticos</h1>
+            <table class="containerResultado">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>UF</th>
+                        <th>Cidade</th>
+                        <th>Referencia</th>
+                        <th>Sobre</th>
+                        <th>Data do Registro</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaPontosTuristicos">
+                    <tr>
+                        <td class="nomePonto"></td>
+                        <td class="estado"></td>
+                        <td class="cidade"></td>
+                        <td class="referencia"></td>
+                        <td class="sobre"></td>
+                        <td class="data"></td>
+                    </tr>
+                </tbody>
+            </table>
             <section class="containerResult">
-                <div id="alert"></div> 
+                <h1></h1>
+                <ul id="dadosPontosTuristicos"></ul>
             </section>
         </main>
         <footer>
         </footer>
-        <script src="./assets/js/jquery.js"></script>
-        <script src="./assets/js/search.js"></script>
+        <script src="./assets/js/validateSearch.js"></script>
     </body>
 </html>

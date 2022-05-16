@@ -1,11 +1,38 @@
 const nomePonto = document.querySelector('.nomePonto');
-const estado = document.querySelector('.estado');
-const cidade = document.querySelector('.cidade');
+const estado = document.querySelector('#uf');
+const cidade = document.querySelector('#cidade');
 const referencia = document.querySelector('.referencia');
 const sobre = document.querySelector('.sobre');
 const alertContainer = document.querySelector('#alert');
 
+const buttonBack = document.querySelector('#buttonVoltar');
 const submitRegister = document.querySelector('#buttonCadastrar');
+
+//não esquecer de criar o recurso do botao voltar
+
+function submitPost(url, body){
+    
+    let request = new XMLHttpRequest();
+    request.open("POST", url, true);
+    request.setRequestHeader("Content-type", "application/json");
+    request.send(JSON.stringify(body));
+
+}
+
+function registerDate(){
+    
+    let url = "https://localhost:3001/pontos";
+
+    body = {
+        "nomePonto": nomePonto.value,
+        "estado": estado.value,
+        "cidade": cidade.value,
+        "referencia": referencia.value,
+        "sobre": sobre.value
+    }
+
+    submitPost(url, body);
+}
 
 function createAlert(reference, message){
     const iconError = 'fa-circle-exclamation'
@@ -82,6 +109,8 @@ function validateInput(event){
     if(nomePontoInvalid() || estadoInvalid() || cidadeInvalid() || referenciaInvalid() || sobreInvalid()){
         return createAlert(false, message);
     } else {
+
+        registerDate()
         createAlert(true, messageDefault);
         clearInput();
     }
@@ -89,3 +118,4 @@ function validateInput(event){
 }
 
 submitRegister.onclick = validateInput;
+
