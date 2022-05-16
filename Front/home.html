@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Home - Pontos Turísticos</title>
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/css/style-home.css">
+        <script src="https://kit.fontawesome.com/41323b41f6.js"></script>
+    </head>
+    <body>
+        <header class="containerHeader">
+            <img src="assets/img/logotipo.png" class="imgLogo" alt="Logo da empresa">
+            <nav class="navHeader">
+                <a href="file:///C:/Users/Fernanda/Desktop/teste-newcon/cadastro.html?">Cadastrar um ponto turístico</a>
+            </nav>
+        </header>
+        <main class="containerMain">
+            <section>
+                <p>Busque por um ponto aqui!</p>
+                <form class="containerSearch">
+                    <div>
+                        <input type="text" id="inputNomePonto" placeholder="Busque pelo nome do PONTO TURÍSTICO.">
+                    <button type="submit" id="buscarPonto">Buscar</button>
+                    </div>  
+                </form>
+                <form class="containerSearch">
+                    <div>
+                        <input type="text" id="inputCidade" placeholder="Busque pelo nome da CIDADE.">
+                    <button type="submit" id="buscarCidade">Buscar</button>
+                    </div>   
+                </form>
+                <form class="containerSearchAll">
+                    <div>
+                    <button type="submit" id="buscarTodos">Buscar todos os Pontos</button>
+                    </div>   
+                </form>   
+            </section>
+            <div id="alert"></div> 
+            <section class="table-resultado">
+                <h1>Pontos Turísticos</h1>
+                <h2>Filtros</h2>
+                <div id="filtros">
+                    <input name="filtro" type="text" id="filtro-nome" placeholder="Filtre pelo nome">
+                    <input name="filtro" type="text" id="filtro-uf" placeholder="Filtre pela UF">
+                    <input name="filtro" type="text" id="filtro-cidade" placeholder="Filtre pela cidade">
+                    <input name="filtro" type="text" id="filtro-referencia"
+                    placeholder="Filtre pela referencia">
+                    <input name="filtro" type="text" id="filtro-sobre"
+                    placeholder="Filtre pela descrição">
+                </div>
+                <table class="containerResultado">
+                    <thead>
+                        <tr class="pontosTuristicos">
+                            <th>Nome</th>
+                            <th>UF</th>
+                            <th>Cidade</th>
+                            <th>Referencia</th>
+                            <th>Sobre</th>
+                            <th>Data do Registro</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaPontosTuristicos">
+                    </tbody>
+                </table>  
+            </section>
+        </main>
+        <footer>
+        </footer>
+        <script src="./assets/js/validateSearch.js"></script>
+        <script src="./assets/js/filterTable.js"></script>
+        
+    </body>
+</html>

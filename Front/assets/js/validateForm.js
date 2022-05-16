@@ -11,7 +11,6 @@ const submitRegister = document.querySelector('#buttonCadastrar');
 //não esquecer de criar o recurso do botao voltar
 
 function submitPost(url, body){
-    
     let request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader("Content-type", "application/json");
@@ -20,7 +19,6 @@ function submitPost(url, body){
 }
 
 function registerDate(){
-    
     let url = "https://localhost:3001/pontos/novo";
 
     body = {

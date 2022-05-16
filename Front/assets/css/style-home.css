@@ -103,3 +103,30 @@ main h1 {
     font-weight: bold;
     margin: 50px;
 }
+
+#buscarTodos {
+    height: 45px;
+    width: 200px;
+    margin: 20px;
+}
+
+.containerSearchAll{
+    display: flex;
+    justify-content: center;
+}
+
+.table-resultado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+#filtros {
+    margin: 20px 0;
+}
+#filtros input {
+    width: 155px;
+}
+
+.invisivel {
+    display: none;
+}

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createTable, insertPontosTuristicos, selectPontosTuristicos, selectPontoTuristico } from '../controllers/tabelaPontosTuristicos.js';
+import { createTable, insertPontosTuristicos, selectPontosTuristicos, selectPontoTuristico } from '.././controllers/tabelaPontosTuristicos.js';
 
 createTable();
 

@@ -4,6 +4,33 @@ const buscarPonto = document.querySelector('#buscarPonto');
 const buscarCidade = document.querySelector('#buscarCidade');
 const alertContainer = document.querySelector('#alert');
 
+function buildTd(dado, classe) {
+    var td = document.createElement("td");
+    td.classList.add(classe);
+    td.textContent = dado;
+
+    return td;
+}
+
+function buildTr(pontoTuristico) {
+    var pontoTuristicoTr = document.createElement("tr");
+    pontoTuristicoTr.classList.add("pontoTuristico");
+    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.nomePonto, "info-nome"));
+    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.cidade, "info-cidade"));
+    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.estado, "info-estado"));
+    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.referencia, "info-referencia"));
+    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.sobre, "info-sobre"));
+    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.data, "info-data"));
+
+    return pontoTuristicoTr;
+}
+    
+function addPontoTuristicoInTable(pontoTuristico) {
+    var pontoTuristicoTr = buildTr(pontoTuristico);
+    var tabela = document.querySelector("#tabelaPontosTuristicos");
+    tabela.appendChild(pontoTuristicoTr);
+}
+
 function submitGet(url){
     let request = new XMLHttpRequest();
     request.open("GET", url, false);
@@ -19,21 +46,27 @@ function submitFilterGet(url, query){
     let request = new XMLHttpRequest();
     request.open("GET", url, false);
     request.send(query);
-    return request.responseText;
 
+    const resposta = request.responseText;
+    const pontoTuristico = JSON.parse(resposta);
+    
+    const pontoTuristicoReverso = pontoTuristico.reverse();
+
+    pontoTuristicoReverso.forEach(function(ponto){
+        addPontoTuristicoInTable(ponto)
+    });
+    
 }
 
 function searchDataPonto(){
-    const valorInput = encodeURIComponent(inputNomePonto.value);
+    let valorInput = encodeURIComponent(inputNomePonto.value);
     submitFilterGet(`https://localhost:3001/ponto?nomePonto=${valorInput}`);
-    console.log(valorInput, typeof(valorInput))
 }
 
-/*
 function searchDataCidade(){
-    submitFilterCidade(`https://localhost:3001/ponto?cidade=${inputCidade}`);
+    let valorInput = encodeURIComponent(inputCidade.value);
+    submitFilterGet(`https://localhost:3001/ponto?cidade=${valorInput}`);
 }
-*/
 
 function createAlert(reference, message){
     const iconError = 'fa-circle-exclamation'
@@ -68,21 +101,14 @@ function clearInput(){
     inputCidade.value = '';
 }
 
-function validateInput(event){
+function validateInputPonto(event){
     event.preventDefault();
     let message = '';
     const messageDefault = 'Busca concluída!';
 
     function inputInvalidPonto(){
-        if(inputNomePonto.value.length === 0 && !inputCidade.value.length){
+        if(inputNomePonto.value.length === 0){
             message = 'Erro, campo Ponto Turistico vazio!';
-            return true;
-        }
-    }
-
-    function inputInvalidCidade(){
-        if(inputCidade.value.length === 0 && !inputNomePonto.value.length){
-            message = 'Erro, campo Cidade vazio!';
             return true;
         }
     }
@@ -96,6 +122,20 @@ function validateInput(event){
         clearInput();
     }
 
+}
+
+function validateInputCidade(event){
+    event.preventDefault();
+    let message = '';
+    const messageDefault = 'Busca concluída!';
+
+    function inputInvalidCidade(){
+        if(inputCidade.value.length === 0){
+            message = 'Erro, campo Cidade vazio!';
+            return true;
+        }
+    }
+
     if(inputInvalidCidade()){
         return createAlert(false, message);
 
@@ -107,5 +147,5 @@ function validateInput(event){
 
 }
 
-buscarPonto.onclick = validateInput;
-buscarCidade.onclick = validateInput;
+buscarPonto.onclick = validateInputPonto;
+buscarCidade.onclick = validateInputCidade;

@@ -1,4 +1,4 @@
-import { openDb } from '../infraestrutura/configDB.js';
+import { openDb } from '.././infraestrutura/configDB.js';
 import moment from 'moment';
 const getDate = moment;
 
@@ -20,7 +20,7 @@ export async function selectPontoTuristico(requisicao, resposta){
     let cidade = requisicao.query.cidade;
 
     openDb().then(db=>{
-        db.all('SELECT nomePonto, cidade, estado FROM PontosTuristicos WHERE nomePonto=? OR cidade=?', [nomePonto, cidade])
+        db.all('SELECT nomePonto, cidade, estado, referencia, sobre, data FROM PontosTuristicos WHERE nomePonto=? OR cidade=?', [nomePonto, cidade])
         .then(ponto=> resposta.json(ponto));
     });
 }
