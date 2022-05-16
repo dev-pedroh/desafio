@@ -16,13 +16,12 @@ export async function selectPontosTuristicos(requisicao, resposta){
 }
 
 export async function selectPontoTuristico(requisicao, resposta){
-    let nomePonto = requisicao.body.nomePonto;
-    let cidade = requisicao.body.cidade;
-    let sobre = requisicao.body.sobre;
-      
+    let nomePonto = requisicao.query.nomePonto;
+    let cidade = requisicao.query.cidade;
+
     openDb().then(db=>{
-        db.all('SELECT nomePonto, cidade, sobre FROM PontosTuristicos WHERE nomePonto=? OR cidade=? OR sobre=?', [nomePonto, cidade, sobre])
-        .then(ponto=> resposta.json(ponto))
+        db.all('SELECT nomePonto, cidade, estado FROM PontosTuristicos WHERE nomePonto=? OR cidade=?', [nomePonto, cidade])
+        .then(ponto=> resposta.json(ponto));
     });
 }
 

@@ -14,7 +14,7 @@ roteador.get('/', (requisicao, resposta)=>{
 
 roteador.get('/pontos', selectPontosTuristicos);
 roteador.get('/ponto', selectPontoTuristico);
-roteador.post('/pontos', insertPontosTuristicos);
+roteador.post('/pontos/novo', insertPontosTuristicos);
 
 
 export default roteador;

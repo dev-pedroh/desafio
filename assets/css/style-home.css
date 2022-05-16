@@ -51,6 +51,7 @@
 
 .containerSearch {
     display: flex;
+    flex-direction: column;
     justify-content: center;    
 }
 
@@ -72,8 +73,6 @@
     font-size: 3em;
     text-align: center;
 }
-
-
 
 table{
 	width: 60%;

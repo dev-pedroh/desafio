@@ -1,5 +1,7 @@
-const inputBuscar = document.querySelector('#inputBuscar');
-const submitInput = document.querySelector('#buttonBuscar');
+const inputNomePonto = document.querySelector('#inputNomePonto');
+const inputCidade = document.querySelector('#inputCidade')
+const buscarPonto = document.querySelector('#buscarPonto');
+const buscarCidade = document.querySelector('#buscarCidade');
 const alertContainer = document.querySelector('#alert');
 
 function submitGet(url){
@@ -8,32 +10,28 @@ function submitGet(url){
     request.send();
 }
 
-function searchData(){
+function searchAllData(){
     let url = "https://localhost:3001/pontos";
     submitGet(url);
 }
 
-function submitFilterGet(url, body){
+function submitFilterGet(url, query){
     let request = new XMLHttpRequest();
     request.open("GET", url, false);
-    request.send(JSON.stringify(body));
+    request.send(query);
     return request.responseText;
 
 }
 
-function searchData(){   
-    let url = "https://localhost:3001/ponto"
-
-    body = {
-        "nomePonto": inputBuscar.value,
-        "estado": inputBuscar.value,
-        "cidade": inputBuscar.value,
-        "referencia": inputBuscar.value,
-        "sobre": inputBuscar.value
-    }
-
-    submitFiltreGet(url, body) 
+function searchDataPonto(){
+    submitFilterGet(`https://localhost:3001/ponto?nomePonto=${inputNomePonto}`);
 }
+
+/*
+function searchDataCidade(){
+    submitFilterCidade(`https://localhost:3001/ponto?cidade=${inputCidade}`);
+}
+*/
 
 function createAlert(reference, message){
     const iconError = 'fa-circle-exclamation'
@@ -64,7 +62,8 @@ function createAlert(reference, message){
 }
 
 function clearInput(){
-    inputBuscar.value = '';
+    inputNomePonto.value = '';
+    inputCidade.value = '';
 }
 
 function validateInput(event){
@@ -72,22 +71,39 @@ function validateInput(event){
     let message = '';
     const messageDefault = 'Busca concluída!';
 
-    function inputInvalid(){
-        if(inputBuscar.value.length === 0){
-            message = 'Erro, campo vazio!';
+    function inputInvalidPonto(){
+        if(inputNomePonto.value.length === 0 && !inputCidade.value.length){
+            message = 'Erro, campo Ponto Turistico vazio!';
             return true;
         }
     }
 
-    if(inputInvalid()){
+    function inputInvalidCidade(){
+        if(inputCidade.value.length === 0 && !inputNomePonto.value.length){
+            message = 'Erro, campo Cidade vazio!';
+            return true;
+        }
+    }
+
+    if(inputInvalidPonto()){
         return createAlert(false, message);
 
     } else {
-        
+        searchDataPonto();
+        createAlert(true, messageDefault);
+        clearInput();
+    }
+
+    if(inputInvalidCidade()){
+        return createAlert(false, message);
+
+    } else {
+        searchDataCidade();
         createAlert(true, messageDefault);
         clearInput();
     }
 
 }
 
-submitInput.onclick = validateInput;
+buscarPonto.onclick = validateInput;
+buscarCidade.onclick = validateInput;

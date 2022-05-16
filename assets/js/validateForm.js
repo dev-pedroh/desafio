@@ -21,7 +21,7 @@ function submitPost(url, body){
 
 function registerDate(){
     
-    let url = "https://localhost:3001/pontos";
+    let url = "https://localhost:3001/pontos/novo";
 
     body = {
         "nomePonto": nomePonto.value,
