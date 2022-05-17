@@ -130,7 +130,7 @@ body {
 #containerResults .controls {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 8px;
 }
 
@@ -154,7 +154,7 @@ body {
 
 #containerResults .controls div:not(.numbers),
 #containerResults .controls div.numbers div{
-    width: 40px;
+    width: 100px;
     height: 40px;
 }
 

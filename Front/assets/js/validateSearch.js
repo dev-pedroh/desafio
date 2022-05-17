@@ -6,10 +6,18 @@ const alertContainer = document.querySelector('#alert');
 const alertContainer2 = document.querySelector('#alert2');
 const buscarTodos = document.querySelector('#buscarTodos');
 
+const state = {
+    page: 1,
+    perPage: 3,
+}
+
 const controls = {
-    next() {},
-    prev() {},
-    goTo() {}
+    next() {
+      state.page++
+    },
+    prev() {
+       
+    },
 }
 
 function buidDivFilho(dado, classe) {
@@ -51,11 +59,13 @@ function insertDivOnHTML(pontoTuristico) {
     lista.appendChild(divPai);
 }
 
-function submitGet(url){
+function submitGet(){
+
+    let url = "https://localhost:3001/pontos";
+
     let request = new XMLHttpRequest();
     request.open("GET", url, false);
     request.send();
-
 
     const resposta = request.responseText;
     
@@ -67,9 +77,8 @@ function submitGet(url){
         insertDivOnHTML(ponto);
         hideSectionResults();
     });
-    
-    //console.log(todosPontosTuristicosReverso)
 
+    return todosPontosTuristicos;
 }
 
 function submitFilterGet(url, query){
@@ -101,13 +110,8 @@ function submitFilterGet(url, query){
     } else {
         createAlert2();
     }
-    
-}
 
-function searchAllData(event){
-    event.preventDefault();
-    let url = "https://localhost:3001/pontos";
-    submitGet(url);
+    return resposta;
 }
 
 function searchDataPonto(){
@@ -118,6 +122,7 @@ function searchDataPonto(){
 function searchDataCidade(){
     let valorInput = encodeURIComponent(inputCidade.value);
     submitFilterGet(`https://localhost:3001/ponto?cidade=${valorInput}`);
+
 }
 
 function createAlert(reference, message){
@@ -202,6 +207,11 @@ function validateInputCidade(event){
         clearInput();
     }
 
+}
+
+function searchAllData(event) {
+    event.preventDefault();
+    submitGet();
 }
 
 buscarPonto.onclick = validateInputPonto;
