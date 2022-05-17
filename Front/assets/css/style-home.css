@@ -7,6 +7,10 @@
     font-family: 'MontSerrat', sans-serif;
 }
 
+body {
+    height: 100vh;
+}
+
 .containerHeader {
     background-color: #132235;
     display: flex;
@@ -38,15 +42,10 @@
 
 .containerMain {
     width: auto;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-}
-
-.containerMain p {
-    margin: 30px; 
 }
 
 .containerSearch {
@@ -69,39 +68,10 @@
 }
 
 .containerMain p{
+    margin: 30px; 
     color: #132235;
     font-size: 3em;
     text-align: center;
-}
-
-table{
-	width: 60%;
-	margin-bottom : .5em;
-    table-layout: fixed;
-}
-
-td, th {
-	padding: .7em;
-	margin: 0;
-	border: 1px solid #ccc;
-	text-align: center;
-}
-
-th {
-	font-weight: bold;
-	background-color: #EEE;
-}
-
-label{
-	color: #555;
-	display: block;
-	margin-bottom: .2em;
-}
-
-main h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 50px;
 }
 
 #buscarTodos {
@@ -115,14 +85,22 @@ main h1 {
     justify-content: center;
 }
 
-.table-resultado {
-    display: flex;
+#titleResults{
+    display:flex;
     flex-direction: column;
     align-items: center;
-} 
+}
+
+#titleResults h1, h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 20px;
+}
+
 #filtros {
     margin: 20px 0;
 }
+
 #filtros input {
     width: 155px;
 }
@@ -133,4 +111,68 @@ main h1 {
 
 #descricao-acao {
     margin: 10px;
+}
+
+#containerResults {
+    width: 100%;
+    margin: 32px auto;
+}
+
+#containerResults .listResults .list {
+    border-bottom: 1px solid lightgrey;
+    padding: 16px 32px;
+}
+
+#containerResults .listResults .list:hover {
+    background-color: rgba(88, 88, 88, 0.04);
+}
+
+#containerResults .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+#containerResults .controls div {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14;
+}
+
+#containerResults .buttonDetails {
+    cursor: pointer;
+    font-size: 10;
+    padding: 5px 8px;
+}
+
+#containerResults .buttonDetails:hover {
+    color: rgba(0, 0, 0, 0.50);
+}
+
+#containerResults .controls div:not(.numbers),
+#containerResults .controls div.numbers div{
+    width: 40px;
+    height: 40px;
+}
+
+#containerResults .controls div.numbers div:hover,
+#containerResults .controls div.numbers div.active {
+    color: lightgrey;
+}
+
+.list .info-nome {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.buttonDetails {
+    margin-top: 10px;
+}
+
+.list .info-sobre, .info-data {
+    display: none;
 }

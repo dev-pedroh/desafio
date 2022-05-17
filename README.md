@@ -13,6 +13,8 @@ Para utilizar a api (após download do projeto)
 
     npm start (responsável por subir a api e coloca-la disponível para ser acessada pelo front)
 
+    endereço do servidor "htpps://localhost:3001/"
+
 
 Abra a pagina inicial disponível em "../front/home.html"
 

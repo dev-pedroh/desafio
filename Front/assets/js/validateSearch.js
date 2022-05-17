@@ -3,53 +3,73 @@ const inputCidade = document.querySelector('#inputCidade')
 const buscarPonto = document.querySelector('#buscarPonto');
 const buscarCidade = document.querySelector('#buscarCidade');
 const alertContainer = document.querySelector('#alert');
+const alertContainer2 = document.querySelector('#alert2');
+const buscarTodos = document.querySelector('#buscarTodos');
 
-function buildTd(dado, classe) {
-    var td = document.createElement("td");
-    td.classList.add(classe);
-    td.textContent = dado;
-
-    return td;
+const controls = {
+    next() {},
+    prev() {},
+    goTo() {}
 }
 
-function buildTr(pontoTuristico) {
-    var pontoTuristicoTr = document.createElement("tr");
-    pontoTuristicoTr.classList.add("pontoTuristico");
-    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.nomePonto, "info-nome"));
-    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.cidade, "info-cidade"));
-    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.estado, "info-estado"));
-    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.referencia, "info-referencia"));
-    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.sobre, "info-sobre"));
-    pontoTuristicoTr.appendChild(buildTd(pontoTuristico.data, "info-data"));
+function buidDivFilho(dado, classe) {
+    const divFilho = document.createElement("div");
+    divFilho.classList.add(classe);
+    divFilho.textContent = dado;
+
+    return divFilho;
+}
+
+function buildButtonDetails(classe){
     
-    return pontoTuristicoTr;
-}
-
-function setInvisible(){
-    const referencia = document.querySelector('.info-referencia');
-    const sobre = document.querySelector('.info-sobre')
-    const data = document.querySelector('.info-data')
+    const buttonDetails = document.createElement("button");
     
-    referencia.classList.add('invisivel');
-    sobre.classList.add('invisivel');
-    data.classList.add('invisivel');
+    buttonDetails.classList.add(classe);
+    buttonDetails.textContent = "Detalhes";
+
+    return buttonDetails;
 }
 
-function addPontoTuristicoInTable(pontoTuristico) {
-    var pontoTuristicoTr = buildTr(pontoTuristico);
-    var tabela = document.querySelector("#tabelaPontosTuristicos");
-    tabela.appendChild(pontoTuristicoTr);
+function buildDivPai(pontoTuristico) {
+    const divPai = document.createElement("div");
+    
+    divPai.classList.add("list");
+
+    divPai.appendChild(buidDivFilho(pontoTuristico.nomePonto, "info-nome"));
+    divPai.appendChild(buidDivFilho(`Endereço: ${pontoTuristico.cidade} - ${pontoTuristico.estado} `, "info-cidade"));
+    divPai.appendChild(buidDivFilho(`Referência: ${pontoTuristico.referencia}`, "info-referencia"));
+    divPai.appendChild(buidDivFilho(`Descrição do local: ${pontoTuristico.sobre}`, "info-sobre"));
+    divPai.appendChild(buidDivFilho(`Data Registro: ${pontoTuristico.data}`, "info-data"));
+    divPai.appendChild(buildButtonDetails("buttonDetails"));
+    
+    return divPai;
+}
+
+function insertDivOnHTML(pontoTuristico) {
+    const divPai = buildDivPai(pontoTuristico);
+    const lista = document.querySelector(".listResults");
+    lista.appendChild(divPai);
 }
 
 function submitGet(url){
     let request = new XMLHttpRequest();
     request.open("GET", url, false);
     request.send();
-}
 
-function searchAllData(){
-    let url = "https://localhost:3001/pontos";
-    submitGet(url);
+
+    const resposta = request.responseText;
+    
+    const todosPontosTuristicos = JSON.parse(resposta);
+    
+    const todosPontosTuristicosReverso = todosPontosTuristicos.reverse();
+
+    todosPontosTuristicosReverso.forEach(function(ponto){
+        insertDivOnHTML(ponto);
+        hideSectionResults();
+    });
+    
+    //console.log(todosPontosTuristicosReverso)
+
 }
 
 function submitFilterGet(url, query){
@@ -62,10 +82,32 @@ function submitFilterGet(url, query){
     
     const pontoTuristicoReverso = pontoTuristico.reverse();
 
-    pontoTuristicoReverso.forEach(function(ponto){
-        addPontoTuristicoInTable(ponto)
-    });
+    function createAlert2(){
+        const alert = `<div> Erro: Não encontramos o que procura! </div>`;
+        alertContainer2.innerHTML = alert;
+
+        setTimeout(function(){
+            alertContainer.innerHTML = '';
+        }, 8000)
+    }
+        
+    if (pontoTuristicoReverso.value == 0) {
+
+        pontoTuristicoReverso.forEach(function(ponto){
+            insertResults(ponto);
+        });
+        hideSectionResults();
+
+    } else {
+        createAlert2();
+    }
     
+}
+
+function searchAllData(event){
+    event.preventDefault();
+    let url = "https://localhost:3001/pontos";
+    submitGet(url);
 }
 
 function searchDataPonto(){
@@ -111,9 +153,9 @@ function clearInput(){
     inputCidade.value = '';
 }
 
-function hideTableResult(){
-    const containerTableResult = document.querySelector('.table-resultado');
-    containerTableResult.classList.remove("invisivel");
+function hideSectionResults(){
+    const containerSectionResults = document.querySelector(".sectionResults");
+    containerSectionResults.classList.remove("invisivel");
 }
 
 function validateInputPonto(event){
@@ -135,7 +177,6 @@ function validateInputPonto(event){
         searchDataPonto();
         createAlert(true, messageDefault);
         clearInput();
-        hideTableResult();
     }
 
 }
@@ -159,10 +200,10 @@ function validateInputCidade(event){
         searchDataCidade();
         createAlert(true, messageDefault);
         clearInput();
-        hideTableResult()
     }
 
 }
 
 buscarPonto.onclick = validateInputPonto;
 buscarCidade.onclick = validateInputCidade;
+buscarTodos.onclick = searchAllData;
