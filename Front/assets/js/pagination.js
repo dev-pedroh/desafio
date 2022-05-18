@@ -10,7 +10,8 @@ const state = {
 const getHtml = {
     get(element){
         return document.querySelector(element);
-    }  
+    }
+    
 }
 
 const controls = {
@@ -26,16 +27,28 @@ const controls = {
             state.page++;
         }
     },
+    showDiv() {
+        const referencia = document.querySelector('.info-referencia');
+        const sobre = document.querySelector('.info-sobre');
+        const data = document.querySelector('.info-data');
+
+        referencia.style.display ="block"
+        sobre.style.display ="block"
+        data.style.display ="block"
+
+    },
     createListeners() {
         getHtml.get('.prev').addEventListener('click', ()=> {
-            controls.prev();
+            this.prev();
             update();
         })
         getHtml.get('.next').addEventListener('click', ()=> {
-            controls.next();
+            this.next();
             update();
         })
-
+        getHtml.get('.buttonDetails').addEventListener('click', ()=> {
+            this.showDiv();
+        })
     }
 }
 

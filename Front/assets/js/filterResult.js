@@ -101,21 +101,3 @@ FilterDescription.addEventListener("input", function() {
         }
     }
 })
-
-function removeInvisible(){
-    const referencia = document.querySelector('.info-referencia');
-    const sobre = document.querySelector('.info-sobre');
-    const data = document.querySelector('info-data');
-
-    referencia.classList.remove("invisible");
-    sobre.classList.remove("invisible");
-    data.classList.remove("invisible");
-}
-
-function activeButtonDetails(){
-    
-}
-
-const buttonDetails = document.querySelector('.buttonDetails');
-
-buttonDetails.onclick = removeInvisible;

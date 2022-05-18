@@ -60,7 +60,6 @@ function submitFilterGet(url, query){
 function searchAllData(event) {
     event.preventDefault();
     submitGet();
-    activeButtonDetails();
 }
 
 function searchDataPonto(){

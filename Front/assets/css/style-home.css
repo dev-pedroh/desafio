@@ -169,6 +169,6 @@ body {
     margin-top: 10px;
 }
 
-.invisible {
+.info-referencia, .info-sobre, .info-data {
     display: none;
 }
