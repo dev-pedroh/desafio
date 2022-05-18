@@ -37,10 +37,11 @@ Nela é possível fazer consultas de pontos turísticos já cadastrados, bem com
 
 Regras de negócio não adcionadas ainda (não entregues no prazo):
 
-    - demonstrar nome, descrição e localização após seleção do ponto
+    - demonstrar nome, descrição e localização após seleção do ponto (restante dos itens da lista)
 
 Regras cumpridas:
 
+    - demonstrar nome, descrição e localização após seleção do ponto (somente no primeiro item, ainda nao encontrei o erro)
     - listagem paginada para consulta de todos os registros (falta registros filtrados)
     - listagem de apenas nome e localização
     - aplicação de cadastro e listagem
