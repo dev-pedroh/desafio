@@ -6,15 +6,16 @@ Para o back-end:
 
     Necessário instalar alguns pacotes, para isto utilize o comando:
 
-    npm init (para instalar os modulos nativos)
+        npm init (para instalar os modulos nativos)
 
-    npm install nodemon cors body-parser config express fs sqlite e sqlite3 (para instalar recursos adcionais ao projeto)
+        npm install nodemon cors body-parser config express fs sqlite e sqlite3 (para instalar recursos adcionais ao projeto)
 
     Após instaladas as dependencias do projeto, utilize o comando:
 
-    npm start (responsável por subir a api e coloca-la disponível para ser acessada pelo front)
+        npm start (responsável por subir a api e coloca-la disponível para ser acessada pelo front)
 
     endereço do servidor "https://localhost:4001/"
+        
         rotas:
         consulta filtrada - GET/ponto 
         consulta total - GET/pontos 
@@ -27,6 +28,7 @@ Para o front-end:
         npm install lite-server
     
     executar o comando para subir a page:
+        
         npm run lite
 
 Abra a pagina inicial disponível em "http://localhost:3000/" e pagina de cadastro em "http://localhost:3000/cadastro.html"
