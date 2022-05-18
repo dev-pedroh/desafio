@@ -38,7 +38,6 @@ Nela é possível fazer consultas de pontos turísticos já cadastrados, bem com
 Regras de negócio não adcionadas ainda (não entregues no prazo):
 
     - demonstrar nome, descrição e localização após seleção do ponto
-    - filtros de descrição, estado e cidade
 
 Regras cumpridas:
 
@@ -47,7 +46,7 @@ Regras cumpridas:
     - aplicação de cadastro e listagem
     - pontos com nome, descrição (100 caracteres) e localização com cidade, estado e referencia
     - listagem ordenada de forma decrescente de acordo com a hora de registro no bd
-    - filtros de termo de busca por nome do ponto 
+    - filtros de termo de busca por nome, descrição, estado e cidade 
     - estados listados como dropdown
     - cidades listadas como dropdown (dependendo do UF)
     - utilizado api ibge para informações de localidade
