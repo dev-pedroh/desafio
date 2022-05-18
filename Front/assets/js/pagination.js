@@ -41,9 +41,10 @@ const controls = {
 
 const list = {
 
-    buidDivFilho(dado, classe) {
+    buidDivFilho(dado, classe, classe2) {
         const divFilho = document.createElement("div");
         divFilho.classList.add(classe);
+        divFilho.classList.add(classe2);
         divFilho.textContent = dado;
     
         return divFilho;
@@ -66,9 +67,9 @@ const list = {
     
         divPai.appendChild(list.buidDivFilho(pontoTuristico.nomePonto, "info-nome"));
         divPai.appendChild(list.buidDivFilho(`Endereço: ${pontoTuristico.cidade} - ${pontoTuristico.estado} `, "info-cidade"));
-        divPai.appendChild(list.buidDivFilho(`Referência: ${pontoTuristico.referencia}`, "info-referencia"));
-        divPai.appendChild(list.buidDivFilho(`Descrição do local: ${pontoTuristico.sobre}`, "info-sobre"));
-        divPai.appendChild(list.buidDivFilho(`Data Registro: ${pontoTuristico.data}`, "info-data"));
+        divPai.appendChild(list.buidDivFilho(`Referência: ${pontoTuristico.referencia}`, "info-referencia", "invisible"));
+        divPai.appendChild(list.buidDivFilho(`Descrição do local: ${pontoTuristico.sobre}`, "info-sobre", "invisible"));
+        divPai.appendChild(list.buidDivFilho(`Data Registro: ${pontoTuristico.data}`, "info-data", "invisible"));
         divPai.appendChild(list.buildButtonDetails("buttonDetails"));
         
         return divPai;
@@ -104,4 +105,5 @@ function init(){
     list.update();
     controls.createListeners();
 }
-init();
+
+document.getElementById('buscarTodos').addEventListener('click', () =>{init()}); 

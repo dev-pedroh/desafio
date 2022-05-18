@@ -8,7 +8,7 @@ const alertContainer = document.querySelector('#alert');
 const buttonBack = document.querySelector('#buttonVoltar');
 const submitRegister = document.querySelector('#buttonCadastrar');
 
-//não esquecer de criar o recurso do botao voltar
+
 
 function submitPost(url, body){
     let request = new XMLHttpRequest();

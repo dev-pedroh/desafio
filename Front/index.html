@@ -54,18 +54,18 @@
             <div id="filtros">
                 <input name="filtro" type="text" id="filtro-nome" placeholder="Filtre pelo nome">
                 <span>ou</span>
-                <input name="filtro" type="text" id="filtro-uf">
-                <span>ou</span>
-                <input name="filtro" type="text" id="filtro-cidade">
+                <select id="uf">
+                    <option>UF</option>
+                </select>
+                <select id="cidade">
+                    <option selected>Cidade</option>
+                </select>
                 <span>ou</span>
                 <input name="filtro" type="text" id="filtro-referencia"
                 placeholder="Filtre pela referencia">
                 <span>ou</span>
                 <input name="filtro" type="text" id="filtro-sobre"
                 placeholder="Filtre pela descrição">
-            </div>
-            <div id="descricao-acao">
-                <h3>Obs.: Para ver a descrição clique duas vezes sobre a linha do Ponto Turístico</h3>
             </div>
             <section id="containerResults">
                 <div class="listResults">
@@ -80,9 +80,11 @@
     </main>
     <footer>
     </footer>
-    <script src="./assets/js/validateSearch.js"></script>
+    <script src="./assets/js/apiLocality.js"></script>
+    <script src="./assets/js/index.js"></script> 
     <script src="./assets/js/filterResult.js"></script>
     <script src="./assets/js/pagination.js"></script>
+    <script src="./assets/js/validateInput.js"></script>
     
 </body>
 </html>
