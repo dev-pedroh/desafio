@@ -11,9 +11,9 @@ import roteador from '../api/routes/routes.js';
 
 app.use(roteador);
 
-app.listen(3000, () => console.log('Api rodando!') );
+app.listen(4000, () => console.log('Api rodando!') );
 
 https.createServer({
-    cert: fs.readFileSync('./back/SSL/code.crt'),
-    key: fs.readFileSync('./back/SSL/code.key')
-}, app).listen(3001, ()=> console.log("https ok"));
+    cert: fs.readFileSync('.././back/SSL/code.crt'),
+    key: fs.readFileSync('.././back/SSL/code.key')
+}, app).listen(4001, ()=> console.log("https ok"));

@@ -2,10 +2,10 @@
   "name": "teste-newcon",
   "version": "1.0.0",
   "description": "teste ",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./back/api/app.js"
+    "start": "nodemon .././back/api/app.js"
   },
   "repository": {
     "type": "git",

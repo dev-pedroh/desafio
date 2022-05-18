@@ -6,62 +6,13 @@ const alertContainer = document.querySelector('#alert');
 const alertContainer2 = document.querySelector('#alert2');
 const buscarTodos = document.querySelector('#buscarTodos');
 
-const state = {
-    page: 1,
-    perPage: 3,
-}
+//construtor do relatorio
 
-const controls = {
-    next() {
-      state.page++
-    },
-    prev() {
-       
-    },
-}
-
-function buidDivFilho(dado, classe) {
-    const divFilho = document.createElement("div");
-    divFilho.classList.add(classe);
-    divFilho.textContent = dado;
-
-    return divFilho;
-}
-
-function buildButtonDetails(classe){
-    
-    const buttonDetails = document.createElement("button");
-    
-    buttonDetails.classList.add(classe);
-    buttonDetails.textContent = "Detalhes";
-
-    return buttonDetails;
-}
-
-function buildDivPai(pontoTuristico) {
-    const divPai = document.createElement("div");
-    
-    divPai.classList.add("list");
-
-    divPai.appendChild(buidDivFilho(pontoTuristico.nomePonto, "info-nome"));
-    divPai.appendChild(buidDivFilho(`Endereço: ${pontoTuristico.cidade} - ${pontoTuristico.estado} `, "info-cidade"));
-    divPai.appendChild(buidDivFilho(`Referência: ${pontoTuristico.referencia}`, "info-referencia"));
-    divPai.appendChild(buidDivFilho(`Descrição do local: ${pontoTuristico.sobre}`, "info-sobre"));
-    divPai.appendChild(buidDivFilho(`Data Registro: ${pontoTuristico.data}`, "info-data"));
-    divPai.appendChild(buildButtonDetails("buttonDetails"));
-    
-    return divPai;
-}
-
-function insertDivOnHTML(pontoTuristico) {
-    const divPai = buildDivPai(pontoTuristico);
-    const lista = document.querySelector(".listResults");
-    lista.appendChild(divPai);
-}
+//requests ao servidor
 
 function submitGet(){
 
-    let url = "https://localhost:3001/pontos";
+    let url = "https://localhost:4001/pontos";
 
     let request = new XMLHttpRequest();
     request.open("GET", url, false);
@@ -71,22 +22,17 @@ function submitGet(){
     
     const todosPontosTuristicos = JSON.parse(resposta);
     
-    const todosPontosTuristicosReverso = todosPontosTuristicos.reverse();
-
-    todosPontosTuristicosReverso.forEach(function(ponto){
-        insertDivOnHTML(ponto);
-        hideSectionResults();
-    });
-
     return todosPontosTuristicos;
 }
 
 function submitFilterGet(url, query){
+
     let request = new XMLHttpRequest();
     request.open("GET", url, false);
     request.send(query);
 
     const resposta = request.responseText;
+
     const pontoTuristico = JSON.parse(resposta);
     
     const pontoTuristicoReverso = pontoTuristico.reverse();
@@ -101,29 +47,34 @@ function submitFilterGet(url, query){
     }
         
     if (pontoTuristicoReverso.value == 0) {
-
-        pontoTuristicoReverso.forEach(function(ponto){
-            insertResults(ponto);
-        });
-        hideSectionResults();
-
-    } else {
         createAlert2();
+    } else {
+        pontoTuristicoReverso.forEach(function(ponto){
+            insertDivOnHTML(ponto);
+        });
+        hideSectionResults(); 
     }
+}
 
-    return resposta;
+//format url
+
+function searchAllData(event) {
+    event.preventDefault();
+    submitGet();
 }
 
 function searchDataPonto(){
     let valorInput = encodeURIComponent(inputNomePonto.value);
-    submitFilterGet(`https://localhost:3001/ponto?nomePonto=${valorInput}`);
+    submitFilterGet(`https://localhost:4001/ponto?nomePonto=${valorInput}`);
 }
 
 function searchDataCidade(){
     let valorInput = encodeURIComponent(inputCidade.value);
-    submitFilterGet(`https://localhost:3001/ponto?cidade=${valorInput}`);
+    submitFilterGet(`https://localhost:4001/ponto?cidade=${valorInput}`);
 
 }
+
+//alerta msg error
 
 function createAlert(reference, message){
     const iconError = 'fa-circle-exclamation'
@@ -153,15 +104,21 @@ function createAlert(reference, message){
     }, 5000)
 }
 
+//delete imput apos submit
+
 function clearInput(){
     inputNomePonto.value = '';
     inputCidade.value = '';
 }
 
+//esconder estrutura do resultado
+
 function hideSectionResults(){
     const containerSectionResults = document.querySelector(".sectionResults");
     containerSectionResults.classList.remove("invisivel");
 }
+
+//validador de dados no imput
 
 function validateInputPonto(event){
     event.preventDefault();
@@ -206,13 +163,9 @@ function validateInputCidade(event){
         createAlert(true, messageDefault);
         clearInput();
     }
-
 }
 
-function searchAllData(event) {
-    event.preventDefault();
-    submitGet();
-}
+//eventos
 
 buscarPonto.onclick = validateInputPonto;
 buscarCidade.onclick = validateInputCidade;
