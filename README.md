@@ -31,7 +31,7 @@ Para o front-end:
 
 Abra a pagina inicial disponível em "http://localhost:3000/" e pagina de cadastro em "http://localhost:3000/cadastro.html"
 
-Nela é possível fazer consultas de pontos turísticos já cadastrados, bem como cadastrar novos pontos na pagina de cadastro disponível em "../front/cadastro.html"
+Nela é possível fazer consultas de pontos turísticos já cadastrados, bem como cadastrar novos pontos na pagina de cadastro.
 
 Regras de negócio não adcionadas ainda (não entregues no prazo):
 
